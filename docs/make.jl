@@ -13,3 +13,7 @@ makedocs(
         "Home" => "index.md",
     ]
 )
+
+deploydocs(
+    repo="github.com/rjpower4/Pat.jl.git"
+)
