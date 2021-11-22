@@ -15,5 +15,6 @@ makedocs(
 )
 
 deploydocs(
-    repo="github.com/rjpower4/Pat.jl.git"
+    repo="github.com/rjpower4/Pat.jl.git",
+    devbranch="main",
 )
