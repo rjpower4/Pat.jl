@@ -1,6 +1,8 @@
-# Pat.jl: A Julia Package for Modern Exploratory Trajectory Design
+# Pat.jl: Modern Exploratory Trajectory Design in Julia
 
-[![CI](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml)
+| **Documentation**   |  **Tests**     |
+|:--------:|:-------------------:|
+|[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://rjpower4.github.io/Pat.jl/dev/) | [![CI](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml) |
 
 ## Installation
 
