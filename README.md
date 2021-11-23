@@ -2,7 +2,7 @@
 
 | **Documentation**   |  **Tests**     |
 |:--------:|:-------------------:|
-|[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://rjpower4.github.io/Pat.jl/dev/) | [![CI](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml) |
+|[![doc-badge](https://img.shields.io/badge/docs-latest-blue.svg)](https://rjpower4.github.io/Pat.jl/dev/) | [![CI](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rjpower4/Pat.jl/actions/workflows/ci.yml) |
 
 ## Installation
 
@@ -14,7 +14,7 @@ machine:
 
 Next, clone this repository and navigate into it
 
-```
+```bash
 git clone https://github.com/rjpower4/Pat.jl.git
 cd ./Pat.jl
 ```
@@ -23,11 +23,12 @@ Now, launch julia and enter `]` to bring up Julia's
 [package manager](https://docs.julialang.org/en/v1/stdlib/Pkg/1).
 Next, activate and instantiate
 
-```
+```julia
 julia> ]
 (@v1.6) pkg> activate .
 (Pat) pkg> instantiate
 ```
+
 Once, that is complete simply launch julia and activate `Pat` to use the library!
 
 ## Usage
