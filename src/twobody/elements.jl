@@ -1,19 +1,28 @@
 abstract type AbstractElements end
 
-parameter(k::AbstractElements) = semi_major_axis(k) * (1 - eccentricity(k)^2)
-pariapsis_radius(k::AbstractElements) = semi_major_axis(k) * (1 - eccentricity(k))
-apoapsis_radius(k::AbstractElements) = semi_major_axis(k) * (1 + eccentricity(k))
+# Helpers
+const _sma = semi_major_axis
+const _ecc = eccentricity
+const _raan = right_ascension
+const _aop = argument_of_periapsis
+const _ta = true_anomaly
 
-function true_longitude(k::AbstractElements)
-    return right_ascension(k) + argument_of_periapsis(k) + true_anomaly(k)
-end
+parameter(k::AbstractElements) = parameter(_sma(k), _ecc(k))
+pariapsis_radius(k::AbstractElements) = _sma(k) * (1 - _ecc(k))
+apoapsis_radius(k::AbstractElements) = _sma(k) * (1 + _ecc(k))
 
-isclosed(k::AbstractElements) = eccentricity(k) < 1
-isopen(k::AbstractElements) = !isclosed(k)
-iscircular(k::AbstractElements) = eccentricity(k) == 0
-iselliptical(k::AbstractElements) = eccentricity(k) < 1
-isparabolic(k::AbstractElements) = eccentricity(k) == 1
-ishyperbolic(k::AbstractElements) = eccentricity(k) > 1
+true_longitude(k::AbstractElements) = true_longitude(_raan(k), _aop(k), _ta(k))
+
+flight_path_angle(k::AbstractElements) = flight_path_angle(_sma(k), _ecc(k), _ta(k))
+
+isclosed(k::AbstractElements) = _ecc(k) |> isclosed
+iscircular(k::AbstractElements) = _ecc(k) |> iscircular
+iselliptical(k::AbstractElements) = _ecc(k) |> iselliptical
+isparabolic(k::AbstractElements) = _ecc(k) |> isparabolic
+ishyperbolic(k::AbstractElements) = _ecc(k) |> ishyperbolic
+
+mean_motion(cb::CelestialBody, e::AbstractElements) = mean_motion(cb, semi_major_axis(e))
+angular_momentum(cb::CelestialBody, e::AbstractElements) = sqrt(_GM(cb) * parameter(e))
 
 # -------------------------------------------------------------------------------------- #
 # -------------------------------------------------------------------------------------- #
