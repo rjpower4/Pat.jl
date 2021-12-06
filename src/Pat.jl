@@ -8,4 +8,7 @@ include("constants.jl")
 # Dimensions
 include("dimensions.jl")
 
+# Celestial Bodies
+include("body.jl")
+
 end
