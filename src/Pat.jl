@@ -8,6 +8,9 @@ include("constants.jl")
 # Dimensions
 include("dimensions.jl")
 
+# Celestial Bodies
+include("bodies.jl")
+
 # Two Body
 include("twobody/twobody.jl")
 
