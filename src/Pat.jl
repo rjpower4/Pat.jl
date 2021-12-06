@@ -9,6 +9,6 @@ include("constants.jl")
 include("dimensions.jl")
 
 # Celestial Bodies
-include("body.jl")
+include("bodies.jl")
 
 end
