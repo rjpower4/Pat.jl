@@ -52,4 +52,10 @@ using Pat
     @test Pat.period(12_000, 100) ≈ 5.735737209545e1
     @test Pat.angular_momentum(12_000, sma, ecc) ≈ 1.003992031841e4
     @test Pat.flight_path_angle(sma, ecc, ta) ≈ 2.170092525064e-1
+
+    cb = Pat.CelestialBody(12_000)
+    @test Pat.circular_velocity(cb, 100) ≈ 1.095445115010e1
+    @test Pat.mean_motion(cb, 100) ≈ 1.095445115010e-1
+    @test Pat.period(cb, 100) ≈ 5.735737209545e1
+    @test Pat.angular_momentum(cb, sma, ecc) ≈ 1.003992031841e4
 end
