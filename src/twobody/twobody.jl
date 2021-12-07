@@ -1,9 +1,11 @@
 const _GM = gravitational_parameter
 
 parameter(sma, ecc) = sma * (1 - ecc * ecc)
-pariapsis_radius(sma, ecc) = sma * (1 - ecc)
+periapsis_radius(sma, ecc) = sma * (1 - ecc)
 apoapsis_radius(sma, ecc) = sma * (1 + ecc)
+
 radius(sma, ecc, ta) = parameter(sma, ecc) / (1 + ecc * cos(ta))
+
 true_longitude(raan, aop, ta) = raan + aop + ta
 
 isclosed(ecc) = ecc < 1
