@@ -1,11 +1,12 @@
 abstract type AbstractElements end
 
 # Helpers
-const _sma = semi_major_axis
-const _ecc = eccentricity
-const _raan = right_ascension
-const _aop = argument_of_periapsis
-const _ta = true_anomaly
+_sma(x) = semi_major_axis(x)
+_ecc(x) = eccentricity(x)
+_raan(x) = right_ascension(x)
+_aop(x) = argument_of_periapsis(x)
+_ta(x) = true_anomaly(x)
+
 
 parameter(k::AbstractElements) = parameter(_sma(k), _ecc(k))
 pariapsis_radius(k::AbstractElements) = _sma(k) * (1 - _ecc(k))
