@@ -2,6 +2,8 @@
 
 module Pat
 
+using DocStringExtensions
+
 # Constant Definitions
 include("constants.jl")
 
