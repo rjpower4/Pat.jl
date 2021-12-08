@@ -115,6 +115,9 @@ angular_momentum(gm, sma, ecc) = sqrt(_GM(gm) * parameter(sma, ecc))
     flight_path_angle(sma, ecc, ta)
 
 Compute the angle between the velocity vector and the local horizon.
+
+A positive flight path angle corresponds to a negative rotation from the local horizon to
+the velocity vector around the angular momentum.
 """
 function flight_path_angle(sma, ecc, ta)
     r = radius(sma, ecc, ta)
@@ -122,8 +125,4 @@ function flight_path_angle(sma, ecc, ta)
 end
 
 include("elements.jl")
-
-
-
-
-
+include("keplerian.jl")

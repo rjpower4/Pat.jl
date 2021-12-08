@@ -59,3 +59,32 @@ using Pat
     @test Pat.period(cb, 100) ≈ 5.735737209545e1
     @test Pat.angular_momentum(cb, sma, ecc) ≈ 1.003992031841e4
 end
+
+@testset "Keplerian Elements" begin
+    sma = 10_000
+    ecc = 0.4
+    inc = 0.5
+    aop = 0.6
+    raan = 0.7
+    ta = 0.8
+
+    @testset "Single Argument Constructor" begin
+        @test Pat.semi_major_axis(Pat.KeplerianElements(sma)) == sma    
+    end
+    
+
+    @testset "Default Inner Constructor" begin
+        ke = Pat.KeplerianElements(sma, ecc, inc, aop, raan, ta)
+        @test Pat.semi_major_axis(ke) == sma
+        @test Pat.eccentricity(ke) == ecc
+        @test Pat.inclination(ke) == inc
+        @test Pat.argument_of_periapsis(ke) == aop
+        @test Pat.right_ascension(ke) == raan
+        @test Pat.true_anomaly(ke) == ta 
+    end
+
+    @testset "Invalid Construction" begin
+        @test_throws DomainError Pat.KeplerianElements(0.0)
+        @test_throws DomainError Pat.KeplerianElements(1.0; ecc=-0.4)
+    end
+end
