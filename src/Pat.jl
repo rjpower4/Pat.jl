@@ -2,6 +2,8 @@
 
 module Pat
 
+using DocStringExtensions
+
 # Constant Definitions
 include("constants.jl")
 
@@ -10,5 +12,8 @@ include("dimensions.jl")
 
 # Celestial Bodies
 include("bodies.jl")
+
+# Two Body
+include("twobody/twobody.jl")
 
 end
