@@ -7,4 +7,5 @@ using Pat
     @test Pat.naif_id(cb) == 1
 
     @test Pat.gravitational_parameter(Pat.CelestialBody(12.3)) == 12.3
+    @test Pat.mass(Pat.CelestialBody(6.6743e-20)) == 1
 end
