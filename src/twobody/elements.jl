@@ -77,9 +77,10 @@ const _ta = true_anomaly
 # Semi-Latus Rectum
 parameter(k::AbstractElements) = parameter(_sma(k), _ecc(k))
 
-# Apse Radii
-pariapsis_radius(k::AbstractElements) = _sma(k) * (1 - _ecc(k))
+# Radii
+periapsis_radius(k::AbstractElements) = _sma(k) * (1 - _ecc(k))
 apoapsis_radius(k::AbstractElements) = _sma(k) * (1 + _ecc(k))
+radius(k::AbstractElements) = radius(_sma(k), _ecc(k), _ta(k))
 
 # True Longitude: See https://en.wikipedia.org/wiki/True_longitude
 true_longitude(k::AbstractElements) = true_longitude(_raan(k), _aop(k), _ta(k))
@@ -102,4 +103,9 @@ mean_motion(cb::CelestialBody, e::AbstractElements) = mean_motion(cb, semi_major
 period(cb::CelestialBody, e::AbstractElements) = period(cb, _sma(e))
 
 # Angular Momentum
-angular_momentum(cb::CelestialBody, e::AbstractElements) = sqrt(_GM(cb) * parameter(e))
+angular_momentum(gm, e::AbstractElements) = angular_momentum(gm, _sma(e), _ecc(e))
+angular_momentum(cb::CelestialBody, e::AbstractElements) = angular_momentum(_GM(cb), e)
+
+# Dynamic Quantitie
+circular_velocity(gm, e::AbstractElements) = circular_velocity(gm, _sma(e))
+mean_motion(gm, e::AbstractElements) = mean_motion(gm, _sma(e))

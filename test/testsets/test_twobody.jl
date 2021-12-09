@@ -87,4 +87,33 @@ end
         @test_throws DomainError Pat.KeplerianElements(0.0)
         @test_throws DomainError Pat.KeplerianElements(1.0; ecc=-0.4)
     end
+
+    @testset "Derived Values" begin
+        sma = 10_000.0
+        ecc = 0.4
+        ta = π / 4
+
+        ke = Pat.KeplerianElements(sma; ecc=ecc, ta=ta)
+        k2 = Pat.KeplerianElements(100)
+    
+        @test Pat.parameter(sma, ecc) == 8_400
+    
+        @testset "Apsis Radii" begin
+            @test Pat.periapsis_radius(ke) == 6_000
+            @test Pat.apoapsis_radius(ke) == 14_000
+        end
+    
+        @test Pat.radius(ke) ≈ 6.547957842623e3
+        @test Pat.circular_velocity(12_000, k2) ≈ 1.095445115010e1
+        @test Pat.mean_motion(12_000, k2) ≈ 1.095445115010e-1
+        @test Pat.period(12_000, k2) ≈ 5.735737209545e1
+        @test Pat.angular_momentum(12_000, ke) ≈ 1.003992031841e4
+        @test Pat.flight_path_angle(ke) ≈ 2.170092525064e-1
+    
+        cb = Pat.CelestialBody(12_000)
+        @test Pat.circular_velocity(cb, k2) ≈ 1.095445115010e1
+        @test Pat.mean_motion(cb, k2) ≈ 1.095445115010e-1
+        @test Pat.period(cb, k2) ≈ 5.735737209545e1
+        @test Pat.angular_momentum(cb, ke) ≈ 1.003992031841e4
+    end
 end
